@@ -10,19 +10,20 @@ interface TaskService {
 
 const taskService: TaskService = {
   getTasksForUser: function (): Task[] {
-    throw new Error('Function not implemented.');
+    return [];
+    console.log('getTasksForUser');
   },
   getTaskById: function (id: string): Task {
-    throw new Error('Function not implemented.');
+    console.log('getTaskById');
   },
   editTaskById: function (id: string): Task {
-    throw new Error('Function not implemented.');
+    console.log('editTaskById');
   },
   createTask: function (task: Task): Task {
-    throw new Error('Function not implemented.');
+    console.log('createTask');
   },
   deleteTask: function (id: string): void {
-    throw new Error('Function not implemented.');
+    console.log('deleteTask');
   },
 };
 

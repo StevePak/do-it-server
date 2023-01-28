@@ -1,12 +1,28 @@
 import { Router } from 'express';
-import taskService from './task';
+import { Context } from '../types/context';
+import { authenticate } from '../utils/auth';
 
 const router = Router();
 
-router.get('/', () => {});
-router.get(':id', () => {});
-router.put('/:id', () => {});
-router.post('/', () => {});
-router.delete(':/id', () => {});
+router.get('/', authenticate, (req: Context, res) => {
+  res.json(req.user);
+  res.status(200);
+});
+router.get(':id', authenticate, (req: Context, res) => {
+  res.json(req.user);
+  res.status(200);
+});
+router.put('/:id', authenticate, (req: Context, res) => {
+  res.json(req.user);
+  res.status(200);
+});
+router.post('/', authenticate, (req: Context, res) => {
+  res.json(req.user);
+  res.status(200);
+});
+router.delete(':/id', authenticate, (req: Context, res) => {
+  res.json(req.user);
+  res.status(200);
+});
 
 export default router;
