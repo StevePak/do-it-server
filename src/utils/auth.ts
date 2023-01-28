@@ -1,9 +1,10 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { UserContext, Context } from '../types/context';
+import { Context } from '../types/context';
 import bcrypt from 'bcrypt';
+import { User } from '../types/user';
 
-export const createJwt = (user: UserContext) => {
+export const createJwt = (user: User) => {
   return jwt.sign(user, process.env.JWT_SECRET || '', {
     expiresIn: '10m',
   });
@@ -20,7 +21,7 @@ export const authenticate = (req: Context, res: Response, next: NextFunction) =>
 
   try {
     const user = jwt.verify(token, process.env.JWT_SECRET ?? '');
-    req.user = user as UserContext;
+    req.user = user as User;
   } catch (e) {
     res.json({ message: 'Forbidden' });
     res.status(401);
