@@ -18,7 +18,7 @@ export const createNewUser = async (req: Context, res: Response) => {
 
   const token = createJwt(tokenBody);
 
-  res.json({ token });
+  res.json({ accessToken: token });
   res.status(200);
 };
 
