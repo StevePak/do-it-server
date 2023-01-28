@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/StevePak/do-it-server#readme",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.16",
     "@types/jsonwebtoken": "^9.0.1",
     "@types/morgan": "^1.9.4",

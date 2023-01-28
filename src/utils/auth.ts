@@ -1,6 +1,7 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserContext, Context } from '../types/context';
+import bcrypt from 'bcrypt';
 
 export const createJwt = (user: UserContext) => {
   return jwt.sign(user, process.env.JWT_SECRET || '', {
@@ -26,4 +27,15 @@ export const authenticate = (req: Context, res: Response, next: NextFunction) =>
     return;
   }
   next();
+};
+
+export const hashPassword = async (password: string) => {
+  const salt = await bcrypt.genSalt();
+  const hash = await bcrypt.hash(password, salt);
+
+  return hash;
+};
+
+export const comparePassword = async (password: string, hash: string) => {
+  return await bcrypt.compare(password, hash);
 };
